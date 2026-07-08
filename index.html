@@ -4,282 +4,315 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RJ Compressores | Equipamentos de Locação</title>
+
   <style>
     :root {
-      --azul-rj: #1f5599;
-      --azul-escuro: #103b73;
-      --azul-claro: #1684f2;
-      --cinza-fundo: #f6f7f9;
-      --cinza-texto: #5f6368;
-      --branco: #ffffff;
-      --erro: #d93025;
-      --sombra: 0 10px 30px rgba(16, 59, 115, 0.18);
+      --azul-rj: #19549B;
+      --azul-escuro: #003B73;
+      --azul-claro: #EAF4FF;
+      --cinza-fundo: #F5F7FA;
+      --cinza-texto: #666;
+      --branco: #FFFFFF;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
       background: var(--cinza-fundo);
-      color: #1f1f1f;
+      color: #222;
     }
 
-    .topbar {
-      height: 86px;
-      background: var(--azul-rj);
-      color: var(--branco);
+    .login-screen {
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.16);
-    }
-
-    .topbar img {
-      position: absolute;
-      left: 22px;
-      height: 62px;
-      object-fit: contain;
-    }
-
-    .topbar h1 {
-      margin: 0;
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: .3px;
-    }
-
-    .login-wrapper {
-      min-height: calc(100vh - 86px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 34px 18px;
+      background: linear-gradient(135deg, var(--azul-rj), var(--azul-escuro));
+      padding: 24px;
     }
 
     .login-card {
       width: 100%;
-      max-width: 430px;
+      max-width: 420px;
       background: var(--branco);
       border-radius: 18px;
-      box-shadow: var(--sombra);
-      padding: 34px 34px 28px;
+      padding: 34px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
       text-align: center;
-      border: 1px solid #e8eaed;
     }
 
-    .login-card .logo {
-      width: 150px;
+    .login-card img {
+      width: 170px;
       margin-bottom: 18px;
     }
 
-    .login-card h2 {
-      margin: 0 0 8px;
+    .login-card h1 {
       color: var(--azul-rj);
-      font-size: 25px;
+      margin: 0;
+      font-size: 26px;
     }
 
     .login-card p {
-      margin: 0 0 24px;
       color: var(--cinza-texto);
+      margin: 10px 0 24px;
       font-size: 15px;
-      line-height: 1.4;
     }
 
-    .field {
+    .input-group {
       text-align: left;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    .field label {
+    .input-group label {
       display: block;
+      font-size: 13px;
       color: var(--azul-escuro);
-      font-weight: 700;
-      font-size: 14px;
-      margin-bottom: 7px;
+      font-weight: bold;
+      margin-bottom: 6px;
     }
 
-    .field input {
+    .input-group input {
       width: 100%;
       height: 46px;
-      border: 1px solid #d7dce2;
+      border: 1px solid #D6DCE5;
       border-radius: 10px;
       padding: 0 14px;
       font-size: 15px;
-      outline: none;
-      background: #fff;
     }
 
-    .field input:focus {
-      border-color: var(--azul-claro);
-      box-shadow: 0 0 0 3px rgba(22,132,242,0.13);
-    }
-
-    .btn {
+    button {
       width: 100%;
       height: 48px;
-      border: 0;
+      border: none;
       border-radius: 10px;
       background: var(--azul-rj);
       color: var(--branco);
       font-size: 16px;
-      font-weight: 800;
+      font-weight: bold;
       cursor: pointer;
-      margin-top: 6px;
+      margin-top: 10px;
     }
 
-    .btn:hover { background: var(--azul-escuro); }
+    button:hover {
+      background: var(--azul-escuro);
+    }
 
     .error {
-      min-height: 22px;
-      color: var(--erro);
+      display: none;
+      color: #D32F2F;
       font-size: 14px;
       margin-top: 14px;
-      font-weight: 700;
+      font-weight: bold;
     }
 
-    .report-page { display: none; min-height: 100vh; background: #fff; }
+    .app {
+      display: none;
+      min-height: 100vh;
+      background: var(--cinza-fundo);
+    }
 
-    .report-header {
-      height: 72px;
+    .header {
+      height: 76px;
       background: var(--azul-rj);
+      color: var(--branco);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 18px 0 22px;
-      color: var(--branco);
+      padding: 0 28px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
     }
 
-    .report-header-left { display: flex; align-items: center; gap: 18px; }
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
 
-    .report-header img { height: 52px; object-fit: contain; }
+    .header img {
+      height: 54px;
+    }
 
-    .report-header h2 { margin: 0; font-size: 25px; }
+    .header h2 {
+      margin: 0;
+      font-size: 28px;
+    }
 
     .logout {
-      border: 1px solid rgba(255,255,255,.7);
-      color: #fff;
-      background: transparent;
+      width: auto;
+      height: 38px;
+      padding: 0 18px;
+      margin: 0;
+      background: #FFFFFF;
+      color: var(--azul-rj);
       border-radius: 8px;
-      padding: 10px 14px;
-      cursor: pointer;
-      font-weight: 700;
+      font-size: 14px;
     }
 
-    .report-frame {
+    .report-wrapper {
+      padding: 16px;
+      height: calc(100vh - 76px);
+    }
+
+    .report-box {
       width: 100%;
-      height: calc(100vh - 72px);
-      border: 0;
-      display: block;
+      height: 100%;
+      background: var(--branco);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
     }
 
-    @media (max-width: 700px) {
-      .topbar { height: 78px; justify-content: flex-end; padding-right: 16px; }
-      .topbar img { left: 14px; height: 52px; }
-      .topbar h1 { font-size: 22px; max-width: 66%; line-height: 1.1; }
-      .login-card { padding: 28px 22px 24px; }
-      .report-header h2 { font-size: 18px; }
-      .report-header img { height: 42px; }
+    .report-box iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        height: 62px;
+        padding: 0 12px;
+      }
+
+      .header img {
+        height: 42px;
+      }
+
+      .header h2 {
+        font-size: 17px;
+      }
+
+      .logout {
+        height: 32px;
+        padding: 0 10px;
+        font-size: 12px;
+      }
+
+      .report-wrapper {
+        padding: 0;
+        height: calc(100vh - 62px);
+      }
+
+      .report-box {
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .report-box iframe {
+        width: 100vw;
+        height: calc(100vh - 62px);
+      }
+
+      .login-card {
+        padding: 28px 22px;
+      }
+
+      .login-card img {
+        width: 145px;
+      }
+
+      .login-card h1 {
+        font-size: 23px;
+      }
     }
   </style>
 </head>
+
 <body>
-  <section id="loginPage">
-    <header class="topbar">
-      <img src="rj-branco.png" alt="RJ Compressores" />
+  <div class="login-screen" id="loginScreen">
+    <div class="login-card">
+      <img src="rj-logo.png" alt="RJ Compressores" />
+
       <h1>Equipamentos de Locação</h1>
-    </header>
+      <p>Informe seu usuário e senha para acessar o relatório.</p>
 
-    <main class="login-wrapper">
-      <div class="login-card">
-        <img class="logo" src="rj-logo.png" alt="RJ Compressores" />
-        <h2>Acesso Restrito</h2>
-        <p>Informe seu usuário e senha para acessar o relatório de equipamentos de locação.</p>
-
-        <form id="loginForm">
-          <div class="field">
-            <label for="usuario">Usuário</label>
-            <input id="usuario" type="text" autocomplete="username" placeholder="Digite seu usuário" required />
-          </div>
-
-          <div class="field">
-            <label for="senha">Senha</label>
-            <input id="senha" type="password" autocomplete="current-password" placeholder="Digite sua senha" required />
-          </div>
-
-          <button class="btn" type="submit">Entrar</button>
-          <div id="erro" class="error"></div>
-        </form>
+      <div class="input-group">
+        <label for="user">Usuário</label>
+        <input type="text" id="user" placeholder="Digite seu usuário" />
       </div>
-    </main>
-  </section>
 
-  <section id="reportPage" class="report-page">
-    <header class="report-header">
-      <div class="report-header-left">
+      <div class="input-group">
+        <label for="password">Senha</label>
+        <input type="password" id="password" placeholder="Digite sua senha" />
+      </div>
+
+      <button onclick="login()">Entrar</button>
+
+      <div class="error" id="errorMessage">
+        Usuário ou senha inválidos.
+      </div>
+    </div>
+  </div>
+
+  <div class="app" id="app">
+    <div class="header">
+      <div class="header-left">
         <img src="rj-branco.png" alt="RJ Compressores" />
         <h2>Equipamentos de Locação</h2>
       </div>
-      <button class="logout" onclick="sair()">Sair</button>
-    </header>
 
-    <iframe
-      class="report-frame"
-      title="Equipamentos de Locação"
-      src="https://app.powerbi.com/view?r=eyJrIjoiMjcxNjczN2QtZmUyNC00ZjJmLTk5OGEtYzcxYTBiNWIxZGI3IiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=b40d2f92407325ca1d88"
-      allowfullscreen="true">
-    </iframe>
-  </section>
+      <button class="logout" onclick="logout()">Sair</button>
+    </div>
+
+    <div class="report-wrapper">
+      <div class="report-box">
+        <iframe
+          title="Equipamentos de Locação"
+          src="https://app.powerbi.com/view?r=eyJrIjoiMjcxNjczN2QtZmUyNC00ZjJmLTk5OGEtYzcxYTBiNWIxZGI3IiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=b40d2f92407325ca1d88"
+          allowfullscreen="true">
+        </iframe>
+      </div>
+    </div>
+  </div>
 
   <script>
-    const usuariosPermitidos = [
-      { usuario: "rj", senha: "RJ@2026" },
-      { usuario: "locacao", senha: "Locacao@2026" },
-      { usuario: "admin", senha: "Admin@2026" }
+    const users = [
+      { user: "rj", password: "RJ@2026" },
+      { user: "locacao", password: "Locacao@2026" },
+      { user: "admin", password: "Admin@2026" }
     ];
 
-    const loginPage = document.getElementById("loginPage");
-    const reportPage = document.getElementById("reportPage");
-    const form = document.getElementById("loginForm");
-    const erro = document.getElementById("erro");
+    function login() {
+      const user = document.getElementById("user").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorMessage = document.getElementById("errorMessage");
 
-    function exibirRelatorio() {
-      loginPage.style.display = "none";
-      reportPage.style.display = "block";
-    }
-
-    function exibirLogin() {
-      loginPage.style.display = "block";
-      reportPage.style.display = "none";
-    }
-
-    if (sessionStorage.getItem("rj_logado") === "sim") {
-      exibirRelatorio();
-    }
-
-    form.addEventListener("submit", function(event) {
-      event.preventDefault();
-
-      const usuario = document.getElementById("usuario").value.trim();
-      const senha = document.getElementById("senha").value;
-
-      const acessoValido = usuariosPermitidos.some(
-        item => item.usuario === usuario && item.senha === senha
+      const validUser = users.find(
+        item => item.user === user && item.password === password
       );
 
-      if (acessoValido) {
-        sessionStorage.setItem("rj_logado", "sim");
-        exibirRelatorio();
+      if (validUser) {
+        localStorage.setItem("rj_logged", "true");
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("app").style.display = "block";
+        errorMessage.style.display = "none";
       } else {
-        erro.textContent = "Usuário ou senha inválidos.";
+        errorMessage.style.display = "block";
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem("rj_logged");
+      document.getElementById("loginScreen").style.display = "flex";
+      document.getElementById("app").style.display = "none";
+    }
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        login();
       }
     });
 
-    function sair() {
-      sessionStorage.removeItem("rj_logado");
-      exibirLogin();
-    }
+    window.onload = function() {
+      if (localStorage.getItem("rj_logged") === "true") {
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("app").style.display = "block";
+      }
+    };
   </script>
 </body>
 </html>
