@@ -3,21 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RJ Compressores | Equipamentos de Locação</title>
+  <title>Relatórios RJ Compressores</title>
 
   <style>
     :root {
       --azul-rj: #19549B;
       --azul-escuro: #003B73;
-      --azul-claro: #EAF4FF;
       --cinza-fundo: #F5F7FA;
-      --cinza-texto: #666;
       --branco: #FFFFFF;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -57,7 +53,7 @@
     }
 
     .login-card p {
-      color: var(--cinza-texto);
+      color: #666;
       margin: 10px 0 24px;
       font-size: 15px;
     }
@@ -85,19 +81,22 @@
     }
 
     button {
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .btn-login {
       width: 100%;
       height: 48px;
-      border: none;
       border-radius: 10px;
       background: var(--azul-rj);
       color: var(--branco);
       font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
       margin-top: 10px;
     }
 
-    button:hover {
+    .btn-login:hover {
       background: var(--azul-escuro);
     }
 
@@ -112,7 +111,6 @@
     .app {
       display: none;
       min-height: 100vh;
-      background: var(--cinza-fundo);
     }
 
     .header {
@@ -138,38 +136,105 @@
 
     .header h2 {
       margin: 0;
-      font-size: 28px;
+      font-size: 26px;
     }
 
     .logout {
-      width: auto;
-      height: 38px;
-      padding: 0 18px;
-      margin: 0;
       background: #FFFFFF;
       color: var(--azul-rj);
       border-radius: 8px;
       font-size: 14px;
+      padding: 10px 18px;
     }
 
-    .report-wrapper {
-      padding: 16px;
+    .menu {
+      padding: 32px;
+      display: block;
+    }
+
+    .menu h1 {
+      color: var(--azul-escuro);
+      margin-bottom: 8px;
+    }
+
+    .menu p {
+      color: #666;
+      margin-bottom: 24px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+      border-left: 6px solid var(--azul-rj);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--azul-rj);
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0 0 18px;
+      color: #666;
+    }
+
+    .card button {
+      background: var(--azul-rj);
+      color: white;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 14px;
+    }
+
+    .report-area {
+      display: none;
       height: calc(100vh - 76px);
     }
 
+    .report-top {
+      height: 52px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    }
+
+    .back {
+      background: var(--azul-rj);
+      color: white;
+      border-radius: 8px;
+      padding: 9px 14px;
+      font-size: 13px;
+    }
+
+    .report-title {
+      font-weight: bold;
+      color: var(--azul-escuro);
+    }
+
     .report-box {
-      width: 100%;
-      height: 100%;
-      background: var(--branco);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+      height: calc(100vh - 128px);
+      padding: 14px;
     }
 
     .report-box iframe {
       width: 100%;
       height: 100%;
       border: 0;
+      border-radius: 14px;
+      background: white;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
     }
 
     @media (max-width: 768px) {
@@ -187,48 +252,51 @@
       }
 
       .logout {
-        height: 32px;
-        padding: 0 10px;
         font-size: 12px;
+        padding: 8px 10px;
       }
 
-      .report-wrapper {
-        padding: 0;
+      .menu {
+        padding: 22px 16px;
+      }
+
+      .menu h1 {
+        font-size: 24px;
+      }
+
+      .report-area {
         height: calc(100vh - 62px);
       }
 
+      .report-top {
+        height: 48px;
+      }
+
       .report-box {
+        height: calc(100vh - 110px);
+        padding: 0;
+      }
+
+      .report-box iframe {
         border-radius: 0;
         box-shadow: none;
       }
 
-      .report-box iframe {
-        width: 100vw;
-        height: calc(100vh - 62px);
-      }
-
       .login-card {
         padding: 28px 22px;
-      }
-
-      .login-card img {
-        width: 145px;
-      }
-
-      .login-card h1 {
-        font-size: 23px;
       }
     }
   </style>
 </head>
 
 <body>
+
   <div class="login-screen" id="loginScreen">
     <div class="login-card">
       <img src="rj-logo.png" alt="RJ Compressores" />
 
-      <h1>Equipamentos de Locação</h1>
-      <p>Informe seu usuário e senha para acessar o relatório.</p>
+      <h1>Relatórios RJ Compressores</h1>
+      <p>Informe seu usuário e senha para acessar os relatórios.</p>
 
       <div class="input-group">
         <label for="user">Usuário</label>
@@ -240,7 +308,7 @@
         <input type="password" id="password" placeholder="Digite sua senha" />
       </div>
 
-      <button onclick="login()">Entrar</button>
+      <button class="btn-login" onclick="login()">Entrar</button>
 
       <div class="error" id="errorMessage">
         Usuário ou senha inválidos.
@@ -252,37 +320,59 @@
     <div class="header">
       <div class="header-left">
         <img src="rj-branco.png" alt="RJ Compressores" />
-        <h2>Equipamentos de Locação</h2>
+        <h2>Relatórios RJ Compressores</h2>
       </div>
 
       <button class="logout" onclick="logout()">Sair</button>
     </div>
 
-    <div class="report-wrapper">
+    <div class="menu" id="menu">
+      <h1>Menu de Relatórios</h1>
+      <p>Selecione abaixo o relatório que deseja acessar.</p>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Equipamentos de Locação</h3>
+          <p>Consulta dos equipamentos disponíveis, locados e em revisão.</p>
+          <button onclick="abrirRelatorio('equipamentos')">Abrir relatório</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="report-area" id="reportArea">
+      <div class="report-top">
+        <button class="back" onclick="voltarMenu()">← Voltar</button>
+        <span class="report-title" id="reportTitle">Equipamentos de Locação</span>
+      </div>
+
       <div class="report-box">
         <iframe
+          id="powerbiFrame"
           title="Equipamentos de Locação"
-          src="https://app.powerbi.com/view?r=eyJrIjoiMjcxNjczN2QtZmUyNC00ZjJmLTk5OGEtYzcxYTBiNWIxZGI3IiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=b40d2f92407325ca1d88"
+          src=""
           allowfullscreen="true">
         </iframe>
       </div>
     </div>
   </div>
 
+  <script src="usuarios.js"></script>
+
   <script>
-    const users = [
-      { user: "rj", password: "RJ@2026" },
-      { user: "locacao", password: "Locacao@2026" },
-      { user: "admin", password: "Admin@2026" }
-    ];
+    const relatorios = {
+      equipamentos: {
+        titulo: "Equipamentos de Locação",
+        url: "https://app.powerbi.com/view?r=eyJrIjoiMjcxNjczN2QtZmUyNC00ZjJmLTk5OGEtYzcxYTBiNWIxZGI3IiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=b40d2f92407325ca1d88"
+      }
+    };
 
     function login() {
       const user = document.getElementById("user").value.trim();
       const password = document.getElementById("password").value.trim();
       const errorMessage = document.getElementById("errorMessage");
 
-      const validUser = users.find(
-        item => item.user === user && item.password === password
+      const validUser = usuarios.find(
+        item => item.usuario === user && item.senha === password
       );
 
       if (validUser) {
@@ -297,12 +387,30 @@
 
     function logout() {
       localStorage.removeItem("rj_logged");
+      document.getElementById("powerbiFrame").src = "";
       document.getElementById("loginScreen").style.display = "flex";
       document.getElementById("app").style.display = "none";
+      voltarMenu();
+    }
+
+    function abrirRelatorio(nome) {
+      const relatorio = relatorios[nome];
+
+      document.getElementById("reportTitle").innerText = relatorio.titulo;
+      document.getElementById("powerbiFrame").src = relatorio.url;
+
+      document.getElementById("menu").style.display = "none";
+      document.getElementById("reportArea").style.display = "block";
+    }
+
+    function voltarMenu() {
+      document.getElementById("reportArea").style.display = "none";
+      document.getElementById("menu").style.display = "block";
+      document.getElementById("powerbiFrame").src = "";
     }
 
     document.addEventListener("keydown", function(event) {
-      if (event.key === "Enter") {
+      if (event.key === "Enter" && document.getElementById("loginScreen").style.display !== "none") {
         login();
       }
     });
@@ -314,5 +422,6 @@
       }
     };
   </script>
+
 </body>
 </html>
