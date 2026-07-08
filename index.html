@@ -9,6 +9,7 @@
     :root {
       --azul-rj: #19549B;
       --azul-escuro: #003B73;
+      --azul-claro: #EAF4FF;
       --cinza-fundo: #F5F7FA;
       --branco: #FFFFFF;
     }
@@ -96,10 +97,6 @@
       margin-top: 10px;
     }
 
-    .btn-login:hover {
-      background: var(--azul-escuro);
-    }
-
     .error {
       display: none;
       color: #D32F2F;
@@ -149,7 +146,6 @@
 
     .menu {
       padding: 32px;
-      display: block;
     }
 
     .menu h1 {
@@ -201,30 +197,46 @@
     }
 
     .report-top {
-      height: 52px;
       background: #ffffff;
+      padding: 14px 22px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 0 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      gap: 14px;
+      border-bottom: 1px solid #E4E8F0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     .back {
-      background: var(--azul-rj);
-      color: white;
-      border-radius: 8px;
-      padding: 9px 14px;
-      font-size: 13px;
+      background: var(--azul-claro);
+      color: var(--azul-rj);
+      border: 1px solid #C7DCF5;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .report-heading {
+      border-left: 5px solid var(--azul-rj);
+      padding-left: 12px;
+    }
+
+    .report-heading span {
+      display: block;
+      font-size: 12px;
+      color: #777;
+      font-weight: normal;
+      margin-bottom: 2px;
     }
 
     .report-title {
+      font-size: 22px;
       font-weight: bold;
       color: var(--azul-escuro);
     }
 
     .report-box {
-      height: calc(100vh - 128px);
+      height: calc(100vh - 145px);
       padding: 14px;
     }
 
@@ -249,6 +261,7 @@
 
       .header h2 {
         font-size: 17px;
+        line-height: 20px;
       }
 
       .logout {
@@ -260,20 +273,36 @@
         padding: 22px 16px;
       }
 
-      .menu h1 {
-        font-size: 24px;
-      }
-
       .report-area {
         height: calc(100vh - 62px);
       }
 
       .report-top {
-        height: 48px;
+        padding: 10px 12px;
+        gap: 10px;
+      }
+
+      .back {
+        padding: 9px 11px;
+        font-size: 13px;
+        border-radius: 9px;
+      }
+
+      .report-heading {
+        padding-left: 10px;
+      }
+
+      .report-heading span {
+        font-size: 11px;
+      }
+
+      .report-title {
+        font-size: 18px;
+        line-height: 21px;
       }
 
       .report-box {
-        height: calc(100vh - 110px);
+        height: calc(100vh - 126px);
         padding: 0;
       }
 
@@ -294,7 +323,6 @@
   <div class="login-screen" id="loginScreen">
     <div class="login-card">
       <img src="rj-logo.png" alt="RJ Compressores" />
-
       <h1>Relatórios RJ Compressores</h1>
       <p>Informe seu usuário e senha para acessar os relatórios.</p>
 
@@ -342,7 +370,11 @@
     <div class="report-area" id="reportArea">
       <div class="report-top">
         <button class="back" onclick="voltarMenu()">← Voltar</button>
-        <span class="report-title" id="reportTitle">Equipamentos de Locação</span>
+
+        <div class="report-heading">
+          <span>Relatório selecionado</span>
+          <div class="report-title" id="reportTitle">Equipamentos de Locação</div>
+        </div>
       </div>
 
       <div class="report-box">
