@@ -10,48 +10,55 @@ const usuarios = [
     senha: "317622",
     nome: "Guilherme",
     perfil: "Administrador",
-    relatorios: ["equipamentos", "projecao"]
+    relatorios: ["equipamentos", "projecao", "programacao"]
   },
   {
     usuario: "jose.lino",
     senha: "Rj@482Km",
     nome: "Jose Lino",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao"]
+    relatorios: ["equipamentos", "projecao", "programacao"]
   },
   {
     usuario: "alexandro",
     senha: "Lp#731Qa",
     nome: "Alexandro Spaeth",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao"]
+    relatorios: ["equipamentos", "projecao", "programacao"]
   },
   {
     usuario: "paulo",
     senha: "Mx!954Te",
     nome: "Paulo Duwe",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao"]
+    relatorios: ["equipamentos", "projecao", "programacao"]
   },
   {
     usuario: "bruno",
     senha: "Vn$286Ru",
     nome: "Bruno Pereira",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao"]
+    relatorios: ["equipamentos", "projecao", "programacao"]
   },
   {
     usuario: "viviane",
     senha: "Gh*619Pw",
     nome: "Viviane Spaeth",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao"]
+    relatorios: ["equipamentos", "projecao", "programacao"]
   },
   {
     usuario: "lucas",
     senha: "Qm#482Xv",
     nome: "Lucas Feliciano",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao"]
+    relatorios: ["equipamentos", "projecao", "programacao"]
+  },
+  {
+    usuario: "ana.paula",
+    senha: "Fc@864Zw",
+    nome: "Ana Paula",
+    perfil: "Geral",
+    relatorios: ["equipamentos", "projecao", "programacao"]
   }
 ];
