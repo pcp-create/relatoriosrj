@@ -17,19 +17,11 @@ const relatorios = [
     url: "https://app.powerbi.com/view?r=eyJrIjoiMjcxNjczN2QtZmUyNC00ZjJmLTk5OGEtYzcxYTBiNWIxZGI3IiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=5a49a992d19ebc5f2eb9"
   },
   {
-    id: "faturamento",
-    titulo: "Faturamento",
-    descricao: "Acompanhamento de faturamento por período, empresa e vendedor.",
-    categoria: "Comercial",
-    icone: "💰",
-    url: "COLE_AQUI_O_LINK_DO_POWER_BI"
-  },
-  {
     id: "projecao",
     titulo: "Projeção de Vendas",
     descricao: "Acompanhamento da projeção mensal de vendas e contratos.",
     categoria: "Comercial",
     icone: "📈",
-    url: "COLE_AQUI_O_LINK_DO_POWER_BI"
+    url: "https://app.powerbi.com/view?r=eyJrIjoiMGMzOGVlM2YtMDMzNC00ODU1LWEzZWYtYTE2YjlkYjUxY2I1IiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=86d81620f1255f5b50aa"
   }
 ];
