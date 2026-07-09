@@ -23,5 +23,13 @@ const relatorios = [
     categoria: "Comercial",
     icone: "📈",
     url: "https://app.powerbi.com/view?r=eyJrIjoiMGMzOGVlM2YtMDMzNC00ODU1LWEzZWYtYTE2YjlkYjUxY2I1IiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=86d81620f1255f5b50aa"
+  },
+  {
+    id: "programacao",
+    titulo: "Programação de Serviços",
+    descricao: "Acompanhamento da progração de serviços da Assistência Técnica.",
+    categoria: "Planejamento",
+    icone: "📅",
+    url: "https://app.powerbi.com/view?r=eyJrIjoiNDYzMTJhYjYtNjY2OS00MjVhLWJkMTctOWY2N2VmNzY0NzJiIiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=4be2b50aad574363d889"
   }
 ];
