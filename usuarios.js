@@ -6,31 +6,52 @@
 
 const usuarios = [
   {
-    usuario: "admin",
-    senha: "Admin@2026",
-    nome: "Administrador",
+    usuario: "guilherme.waltrick",
+    senha: "317622",
+    nome: "Guilherme",
     perfil: "Administrador",
-    relatorios: ["equipamentos", "faturamento", "projecao"]
+    relatorios: ["equipamentos", "projecao"]
   },
   {
-    usuario: "rj",
-    senha: "RJ@2026",
-    nome: "RJ Compressores",
+    usuario: "jose.lino",
+    senha: "Rj@482Km",
+    nome: "Jose Lino",
     perfil: "Geral",
-    relatorios: ["equipamentos"]
+    relatorios: ["equipamentos", "projecao"]
   },
   {
-    usuario: "locacao",
-    senha: "Locacao@2026",
-    nome: "Equipe Locação",
-    perfil: "Locação",
-    relatorios: ["equipamentos"]
+    usuario: "alexandro",
+    senha: "Lp#731Qa",
+    nome: "Alexandro Spaeth",
+    perfil: "Geral",
+    relatorios: ["equipamentos", "projecao"]
   },
   {
-    usuario: "comercial",
-    senha: "Comercial@2026",
-    nome: "Comercial",
-    perfil: "Comercial",
-    relatorios: ["faturamento", "projecao"]
+    usuario: "paulo",
+    senha: "Mx!954Te",
+    nome: "Paulo Duwe",
+    perfil: "Geral",
+    relatorios: ["equipamentos", "projecao"]
+  },
+  {
+    usuario: "bruno",
+    senha: "Vn$286Ru",
+    nome: "Bruno Pereira",
+    perfil: "Geral",
+    relatorios: ["equipamentos", "projecao"]
+  },
+  {
+    usuario: "viviane",
+    senha: "Gh*619Pw",
+    nome: "Viviane Spaeth",
+    perfil: "Geral",
+    relatorios: ["equipamentos", "projecao"]
+  },
+  {
+    usuario: "lucas",
+    senha: "Qm#482Xv",
+    nome: "Lucas Feliciano",
+    perfil: "Geral",
+    relatorios: ["equipamentos", "projecao"]
   }
 ];
