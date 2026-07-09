@@ -60,5 +60,12 @@ const usuarios = [
     nome: "Ana Paula",
     perfil: "Geral",
     relatorios: ["equipamentos", "projecao", "programacao"]
+  },
+  {
+    usuario: "priscyla",
+    senha: "Hs%251Nd",
+    nome: "Priscyla",
+    perfil: "Geral",
+    relatorios: ["equipamentos", "projecao", "programacao"]
   }
 ];
