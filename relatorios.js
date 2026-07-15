@@ -31,5 +31,13 @@ const relatorios = [
     categoria: "Planejamento",
     icone: "📅",
     url: "https://app.powerbi.com/view?r=eyJrIjoiNDYzMTJhYjYtNjY2OS00MjVhLWJkMTctOWY2N2VmNzY0NzJiIiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=4be2b50aad574363d889"
+  },
+  {
+    id: "ordemserviço",
+    titulo: "Análise Ordens de Serviço",
+    descricao: "Verificação do Faturamento e Custos das Ordens de Serviço.",
+    categoria: "Planejamento",
+    icone: "⚙️",
+    url: "https://app.powerbi.com/view?r=eyJrIjoiOWY4YWE4YTktOTFjOC00ZWEwLWEzNjAtYjRjOTY1NDc4YjczIiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=2bf6020dd50a5cae940a"
   }
 ];
