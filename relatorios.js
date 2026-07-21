@@ -39,5 +39,13 @@ const relatorios = [
     categoria: "Planejamento",
     icone: "⚙️",
     url: "https://app.powerbi.com/view?r=eyJrIjoiOWY4YWE4YTktOTFjOC00ZWEwLWEzNjAtYjRjOTY1NDc4YjczIiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=2bf6020dd50a5cae940a"
+  },
+  {
+    id: "faroloficina",
+    titulo: "Farol de Oficina",
+    descricao: "Verificação dos KPI's e equipamentos em Oficina.",
+    categoria: "Planejamento",
+    icone: "🏭",
+    url: "https://app.powerbi.com/view?r=eyJrIjoiNmMzYjAwZDMtN2U5NS00MWY5LWE4ODYtMjU0NzEwOTkwMTlkIiwidCI6ImZiMmI1MzQ5LTU5MjYtNDU4ZC1iYzA3LTMwZjYxMDhjMjc2OSJ9&pageName=ReportSection9d9c6c6f811b9678c981"
   }
 ];
