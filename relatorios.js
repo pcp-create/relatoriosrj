@@ -54,7 +54,7 @@ const relatorios = [
     descricao: "Sistema de Relatórios e Gestão de Despesas.",
     categoria: "Operacional",
     icone: "💳",
-    url: "https://despesasrj.vercel.app/"
+    url: "https://despesasrj.vercel.app/",
     novaAba: true
   }
 ];
