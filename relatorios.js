@@ -55,5 +55,6 @@ const relatorios = [
     categoria: "Operacional",
     icone: "💳",
     url: "https://despesasrj.vercel.app/"
+    novaAba: true
   }
 ];
