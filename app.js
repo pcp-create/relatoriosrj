@@ -253,3 +253,178 @@ document.addEventListener("keydown", event => {
 });
 
 carregarSessaoSalva();
+// ==========================================================
+// TELA CHEIA DO RELATÓRIO
+// ==========================================================
+
+const btnFullscreen =
+  document.getElementById("btnFullscreen");
+
+const btnFullscreenExit =
+  document.getElementById("btnFullscreenExit");
+
+const reportArea =
+  document.getElementById("reportArea");
+
+
+// ==========================================================
+// ATIVAR TELA CHEIA
+// ==========================================================
+
+async function ativarTelaCheiaRelatorio() {
+
+  document.body.classList.add(
+    "report-fullscreen"
+  );
+
+
+  /*
+    Tenta ativar também a tela cheia nativa
+    do navegador.
+
+    Caso o navegador bloqueie,
+    o modo visual continuará funcionando.
+  */
+
+  try {
+
+    if (
+      document.documentElement.requestFullscreen
+    ) {
+
+      await document.documentElement.requestFullscreen();
+
+    }
+
+  } catch (erro) {
+
+    console.log(
+      "Tela cheia nativa não disponível:",
+      erro
+    );
+
+  }
+
+}
+
+
+// ==========================================================
+// SAIR DA TELA CHEIA
+// ==========================================================
+
+async function sairTelaCheiaRelatorio() {
+
+  document.body.classList.remove(
+    "report-fullscreen"
+  );
+
+
+  try {
+
+    if (
+      document.fullscreenElement &&
+      document.exitFullscreen
+    ) {
+
+      await document.exitFullscreen();
+
+    }
+
+  } catch (erro) {
+
+    console.log(
+      "Não foi possível sair da tela cheia:",
+      erro
+    );
+
+  }
+
+}
+
+
+// ==========================================================
+// CLIQUE NO BOTÃO TELA CHEIA
+// ==========================================================
+
+if (btnFullscreen) {
+
+  btnFullscreen.addEventListener(
+    "click",
+    ativarTelaCheiaRelatorio
+  );
+
+}
+
+
+// ==========================================================
+// CLIQUE NO BOTÃO X
+// ==========================================================
+
+if (btnFullscreenExit) {
+
+  btnFullscreenExit.addEventListener(
+    "click",
+    sairTelaCheiaRelatorio
+  );
+
+}
+
+
+// ==========================================================
+// ESC
+// ==========================================================
+
+document.addEventListener(
+  "fullscreenchange",
+  () => {
+
+    /*
+      Caso o usuário pressione ESC,
+      também removemos nosso modo visual.
+    */
+
+    if (!document.fullscreenElement) {
+
+      document.body.classList.remove(
+        "report-fullscreen"
+      );
+
+    }
+
+  }
+);
+
+
+// ==========================================================
+// GARANTIA AO VOLTAR PARA O MENU
+// ==========================================================
+
+const btnBack =
+  document.getElementById("btnBack");
+
+
+if (btnBack) {
+
+  btnBack.addEventListener(
+    "click",
+    () => {
+
+      document.body.classList.remove(
+        "report-fullscreen"
+      );
+
+
+      if (
+        document.fullscreenElement &&
+        document.exitFullscreen
+      ) {
+
+        document.exitFullscreen()
+          .catch(() => {});
+
+      }
+
+    }
+  );
+
+}
