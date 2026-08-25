@@ -1,6 +1,10 @@
 let usuarioLogado = null;
 let filtroAtual = "";
 
+// ==========================================================
+// ELEMENTOS DA PÁGINA
+// ==========================================================
+
 const loginScreen = document.getElementById("loginScreen");
 const app = document.getElementById("app");
 const errorMessage = document.getElementById("errorMessage");
@@ -14,12 +18,32 @@ const userInfo = document.getElementById("userInfo");
 const accessChip = document.getElementById("accessChip");
 const searchReport = document.getElementById("searchReport");
 
+const btnLogin = document.getElementById("btnLogin");
+const btnLogout = document.getElementById("btnLogout");
+const btnBack = document.getElementById("btnBack");
+
+const btnFullscreen =
+  document.getElementById("btnFullscreen");
+
+const btnFullscreenExit =
+  document.getElementById("btnFullscreenExit");
+
+
+// ==========================================================
+// LOGIN
+// ==========================================================
+
 function login() {
-  const user = document.getElementById("user").value.trim();
-  const password = document.getElementById("password").value.trim();
+  const user =
+    document.getElementById("user").value.trim();
+
+  const password =
+    document.getElementById("password").value.trim();
 
   const validUser = usuarios.find(
-    item => item.usuario === user && item.senha === password
+    item =>
+      item.usuario === user &&
+      item.senha === password
   );
 
   if (!validUser) {
@@ -29,8 +53,15 @@ function login() {
 
   usuarioLogado = validUser;
 
-  localStorage.setItem("rj_logged", "true");
-  localStorage.setItem("rj_user", validUser.usuario);
+  localStorage.setItem(
+    "rj_logged",
+    "true"
+  );
+
+  localStorage.setItem(
+    "rj_user",
+    validUser.usuario
+  );
 
   loginScreen.style.display = "none";
   app.style.display = "block";
@@ -40,13 +71,27 @@ function login() {
   montarMenuRelatorios();
 }
 
+
+// ==========================================================
+// LOGOUT
+// ==========================================================
+
 function logout() {
+
+  // Garante saída da tela cheia
+  sairTelaCheiaRelatorio();
+
   localStorage.removeItem("rj_logged");
   localStorage.removeItem("rj_user");
 
   usuarioLogado = null;
+
   powerbiFrame.src = "";
-  searchReport.value = "";
+
+  if (searchReport) {
+    searchReport.value = "";
+  }
+
   filtroAtual = "";
 
   voltarMenu();
@@ -55,62 +100,105 @@ function logout() {
   app.style.display = "none";
 }
 
+
+// ==========================================================
+// CABEÇALHO
+// ==========================================================
+
 function atualizarCabecalhoUsuario() {
   if (!usuarioLogado) return;
 
   userInfo.innerText =
     `${usuarioLogado.nome} • ${usuarioLogado.perfil}`;
 
-  const total = usuarioLogado.relatorios.length;
+  const total =
+    usuarioLogado.relatorios.length;
 
   accessChip.innerText =
     `${total} relatório${total === 1 ? "" : "s"} ` +
     `liberado${total === 1 ? "" : "s"}`;
 }
 
-function obterRelatoriosPermitidos() {
-  if (!usuarioLogado) return [];
 
-  return relatorios.filter(relatorio =>
-    usuarioLogado.relatorios.includes(relatorio.id)
+// ==========================================================
+// RELATÓRIOS PERMITIDOS
+// ==========================================================
+
+function obterRelatoriosPermitidos() {
+
+  if (!usuarioLogado) {
+    return [];
+  }
+
+  return relatorios.filter(
+    relatorio =>
+      usuarioLogado.relatorios.includes(
+        relatorio.id
+      )
   );
 }
 
+
+// ==========================================================
+// MONTAR MENU
+// ==========================================================
+
 function montarMenuRelatorios() {
-  const textoBusca = filtroAtual.toLowerCase().trim();
-  const permitidos = obterRelatoriosPermitidos();
 
-  const filtrados = permitidos.filter(relatorio => {
-    const texto =
-      `${relatorio.titulo} ` +
-      `${relatorio.descricao} ` +
-      `${relatorio.categoria}`.toLowerCase();
+  const textoBusca =
+    filtroAtual
+      .toLowerCase()
+      .trim();
 
-    return texto.includes(textoBusca);
-  });
+  const permitidos =
+    obterRelatoriosPermitidos();
+
+  const filtrados =
+    permitidos.filter(relatorio => {
+
+      const texto =
+        `${relatorio.titulo || ""} ` +
+        `${relatorio.descricao || ""} ` +
+        `${relatorio.categoria || ""}`;
+
+      return texto
+        .toLowerCase()
+        .includes(textoBusca);
+    });
 
   cardsRelatorios.innerHTML = "";
 
   filtrados.forEach(relatorio => {
-    const card = document.createElement("article");
+
+    const card =
+      document.createElement("article");
+
     card.className = "card";
 
     card.innerHTML = `
       <div class="card-header">
+
         <div class="card-icon">
           ${relatorio.icone || "📊"}
         </div>
 
         <div>
+
           <div class="card-category">
             ${relatorio.categoria || "Relatório"}
           </div>
 
-          <h3>${relatorio.titulo}</h3>
+          <h3>
+            ${relatorio.titulo}
+          </h3>
+
         </div>
+
       </div>
 
-      <p>${relatorio.descricao}</p>
+      <p>
+        ${relatorio.descricao || ""}
+      </p>
 
       <button
         type="button"
@@ -120,35 +208,54 @@ function montarMenuRelatorios() {
       </button>
     `;
 
-    card
-      .querySelector("button")
-      .addEventListener(
-        "click",
-        () => abrirRelatorio(relatorio.id)
-      );
+    const botao =
+      card.querySelector("button");
+
+    botao.addEventListener(
+      "click",
+      () => abrirRelatorio(relatorio.id)
+    );
 
     cardsRelatorios.appendChild(card);
   });
 
   emptyState.style.display =
-    filtrados.length === 0 ? "block" : "none";
+    filtrados.length === 0
+      ? "block"
+      : "none";
 }
 
+
+// ==========================================================
+// ABRIR RELATÓRIO
+// ==========================================================
+
 function abrirRelatorio(idRelatorio) {
+
   if (
     !usuarioLogado ||
     !usuarioLogado.relatorios.includes(idRelatorio)
   ) {
-    alert("Você não possui acesso a este relatório.");
+
+    alert(
+      "Você não possui acesso a este relatório."
+    );
+
     return;
   }
 
-  const relatorio = relatorios.find(
-    item => item.id === idRelatorio
-  );
+  const relatorio =
+    relatorios.find(
+      item =>
+        item.id === idRelatorio
+    );
 
   if (!relatorio) {
-    alert("Relatório não encontrado.");
+
+    alert(
+      "Relatório não encontrado."
+    );
+
     return;
   }
 
@@ -156,17 +263,21 @@ function abrirRelatorio(idRelatorio) {
     !relatorio.url ||
     relatorio.url.includes("COLE_AQUI")
   ) {
-    alert("O link deste relatório ainda não foi configurado.");
+
+    alert(
+      "O link deste relatório ainda não foi configurado."
+    );
+
     return;
   }
 
-  /*
-    Relatórios que possuem:
-    novaAba: true
 
-    serão abertos em uma nova aba do navegador.
-  */
+  // ========================================================
+  // ABRIR EM NOVA ABA
+  // ========================================================
+
   if (relatorio.novaAba === true) {
+
     window.open(
       relatorio.url,
       "_blank",
@@ -176,27 +287,67 @@ function abrirRelatorio(idRelatorio) {
     return;
   }
 
-  /*
-    Todos os demais relatórios continuam
-    abrindo dentro do portal pelo iframe.
-  */
-  reportTitle.innerText = relatorio.titulo;
-  powerbiFrame.title = relatorio.titulo;
-  powerbiFrame.src = relatorio.url;
+
+  // ========================================================
+  // ABRIR NO IFRAME
+  // ========================================================
+
+  reportTitle.innerText =
+    relatorio.titulo;
+
+  powerbiFrame.title =
+    relatorio.titulo;
+
+  powerbiFrame.src =
+    relatorio.url;
 
   menu.style.display = "none";
   reportArea.style.display = "block";
 }
 
+
+// ==========================================================
+// VOLTAR AO MENU
+// ==========================================================
+
 function voltarMenu() {
+
+  // Remove modo tela cheia
+  document.body.classList.remove(
+    "report-fullscreen"
+  );
+
+  if (
+    document.fullscreenElement &&
+    document.exitFullscreen
+  ) {
+
+    document
+      .exitFullscreen()
+      .catch(() => {});
+  }
+
   reportArea.style.display = "none";
   menu.style.display = "block";
   powerbiFrame.src = "";
 }
 
+
+// ==========================================================
+// CARREGAR SESSÃO SALVA
+// ==========================================================
+
 function carregarSessaoSalva() {
-  const logged = localStorage.getItem("rj_logged");
-  const savedUser = localStorage.getItem("rj_user");
+
+  const logged =
+    localStorage.getItem(
+      "rj_logged"
+    );
+
+  const savedUser =
+    localStorage.getItem(
+      "rj_user"
+    );
 
   if (
     logged !== "true" ||
@@ -205,12 +356,16 @@ function carregarSessaoSalva() {
     return;
   }
 
-  const user = usuarios.find(
-    item => item.usuario === savedUser
-  );
+  const user =
+    usuarios.find(
+      item =>
+        item.usuario === savedUser
+    );
 
   if (!user) {
+
     logout();
+
     return;
   }
 
@@ -223,52 +378,9 @@ function carregarSessaoSalva() {
   montarMenuRelatorios();
 }
 
-document
-  .getElementById("btnLogin")
-  .addEventListener("click", login);
-
-document
-  .getElementById("btnLogout")
-  .addEventListener("click", logout);
-
-document
-  .getElementById("btnBack")
-  .addEventListener("click", voltarMenu);
-
-searchReport.addEventListener("input", event => {
-  filtroAtual = event.target.value;
-  montarMenuRelatorios();
-});
-
-document.addEventListener("keydown", event => {
-  const loginVisivel =
-    loginScreen.style.display !== "none";
-
-  if (
-    event.key === "Enter" &&
-    loginVisivel
-  ) {
-    login();
-  }
-});
-
-carregarSessaoSalva();
-// ==========================================================
-// TELA CHEIA DO RELATÓRIO
-// ==========================================================
-
-const btnFullscreen =
-  document.getElementById("btnFullscreen");
-
-const btnFullscreenExit =
-  document.getElementById("btnFullscreenExit");
-
-const reportArea =
-  document.getElementById("reportArea");
-
 
 // ==========================================================
-// ATIVAR TELA CHEIA
+// TELA CHEIA
 // ==========================================================
 
 async function ativarTelaCheiaRelatorio() {
@@ -277,23 +389,15 @@ async function ativarTelaCheiaRelatorio() {
     "report-fullscreen"
   );
 
-
-  /*
-    Tenta ativar também a tela cheia nativa
-    do navegador.
-
-    Caso o navegador bloqueie,
-    o modo visual continuará funcionando.
-  */
-
   try {
 
     if (
-      document.documentElement.requestFullscreen
+      document.documentElement
+        .requestFullscreen
     ) {
 
-      await document.documentElement.requestFullscreen();
-
+      await document.documentElement
+        .requestFullscreen();
     }
 
   } catch (erro) {
@@ -302,9 +406,7 @@ async function ativarTelaCheiaRelatorio() {
       "Tela cheia nativa não disponível:",
       erro
     );
-
   }
-
 }
 
 
@@ -318,7 +420,6 @@ async function sairTelaCheiaRelatorio() {
     "report-fullscreen"
   );
 
-
   try {
 
     if (
@@ -327,7 +428,6 @@ async function sairTelaCheiaRelatorio() {
     ) {
 
       await document.exitFullscreen();
-
     }
 
   } catch (erro) {
@@ -336,15 +436,40 @@ async function sairTelaCheiaRelatorio() {
       "Não foi possível sair da tela cheia:",
       erro
     );
-
   }
-
 }
 
 
 // ==========================================================
-// CLIQUE NO BOTÃO TELA CHEIA
+// EVENTOS
 // ==========================================================
+
+if (btnLogin) {
+
+  btnLogin.addEventListener(
+    "click",
+    login
+  );
+}
+
+
+if (btnLogout) {
+
+  btnLogout.addEventListener(
+    "click",
+    logout
+  );
+}
+
+
+if (btnBack) {
+
+  btnBack.addEventListener(
+    "click",
+    voltarMenu
+  );
+}
+
 
 if (btnFullscreen) {
 
@@ -352,13 +477,8 @@ if (btnFullscreen) {
     "click",
     ativarTelaCheiaRelatorio
   );
-
 }
 
-
-// ==========================================================
-// CLIQUE NO BOTÃO X
-// ==========================================================
 
 if (btnFullscreenExit) {
 
@@ -366,65 +486,68 @@ if (btnFullscreenExit) {
     "click",
     sairTelaCheiaRelatorio
   );
+}
 
+
+if (searchReport) {
+
+  searchReport.addEventListener(
+    "input",
+    event => {
+
+      filtroAtual =
+        event.target.value;
+
+      montarMenuRelatorios();
+    }
+  );
 }
 
 
 // ==========================================================
-// ESC
+// ENTER NO LOGIN
+// ==========================================================
+
+document.addEventListener(
+  "keydown",
+  event => {
+
+    const loginVisivel =
+      loginScreen.style.display !== "none";
+
+    if (
+      event.key === "Enter" &&
+      loginVisivel
+    ) {
+
+      login();
+    }
+  }
+);
+
+
+// ==========================================================
+// ESC / SAÍDA DA TELA CHEIA
 // ==========================================================
 
 document.addEventListener(
   "fullscreenchange",
   () => {
 
-    /*
-      Caso o usuário pressione ESC,
-      também removemos nosso modo visual.
-    */
-
-    if (!document.fullscreenElement) {
+    if (
+      !document.fullscreenElement
+    ) {
 
       document.body.classList.remove(
         "report-fullscreen"
       );
-
     }
-
   }
 );
 
 
 // ==========================================================
-// GARANTIA AO VOLTAR PARA O MENU
+// INICIALIZAÇÃO
 // ==========================================================
 
-const btnBack =
-  document.getElementById("btnBack");
-
-
-if (btnBack) {
-
-  btnBack.addEventListener(
-    "click",
-    () => {
-
-      document.body.classList.remove(
-        "report-fullscreen"
-      );
-
-
-      if (
-        document.fullscreenElement &&
-        document.exitFullscreen
-      ) {
-
-        document.exitFullscreen()
-          .catch(() => {});
-
-      }
-
-    }
-  );
-
-}
+carregarSessaoSalva();
