@@ -14,11 +14,17 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background: var(--cinza-fundo);
-  color: #222;
+  color: #222222;
 }
 
 button,
@@ -32,12 +38,20 @@ button {
   font-weight: bold;
 }
 
+/* ==========================================================
+   LOGIN
+========================================================== */
+
 .login-screen {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--azul-rj), var(--azul-escuro));
+  background: linear-gradient(
+    135deg,
+    var(--azul-rj),
+    var(--azul-escuro)
+  );
   padding: 24px;
 }
 
@@ -53,6 +67,7 @@ button {
 
 .login-logo {
   width: 170px;
+  max-width: 100%;
   margin-bottom: 18px;
 }
 
@@ -123,10 +138,19 @@ button {
   font-weight: bold;
 }
 
+/* ==========================================================
+   APLICAÇÃO
+========================================================== */
+
 .app {
   display: none;
   min-height: 100vh;
+  width: 100%;
 }
+
+/* ==========================================================
+   CABEÇALHO
+========================================================== */
 
 .header {
   height: 76px;
@@ -175,6 +199,14 @@ button {
   flex-shrink: 0;
 }
 
+.logout:hover {
+  background: var(--azul-claro);
+}
+
+/* ==========================================================
+   MENU
+========================================================== */
+
 .menu {
   padding: 32px;
 }
@@ -194,7 +226,7 @@ button {
 }
 
 .menu p {
-  color: #666;
+  color: #666666;
   margin: 0;
 }
 
@@ -214,9 +246,16 @@ button {
   margin-bottom: 22px;
 }
 
+/* ==========================================================
+   CARDS
+========================================================== */
+
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(270px, 1fr)
+  );
   gap: 18px;
 }
 
@@ -224,11 +263,13 @@ button {
   background: var(--branco);
   border-radius: 17px;
   padding: 24px;
-  box-shadow: 0 5px 18px rgba(0,0,0,0.10);
+  box-shadow: 0 5px 18px rgba(0, 0, 0, 0.10);
   border: 1px solid #E4E8F0;
   border-left: 6px solid var(--azul-rj);
+
   display: flex;
   flex-direction: column;
+
   min-height: 205px;
 }
 
@@ -245,9 +286,11 @@ button {
   border-radius: 14px;
   background: var(--azul-claro);
   color: var(--azul-rj);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   font-size: 24px;
   flex-shrink: 0;
 }
@@ -259,7 +302,7 @@ button {
 }
 
 .card-category {
-  color: #777;
+  color: #777777;
   font-size: 12px;
   font-weight: bold;
   text-transform: uppercase;
@@ -269,14 +312,14 @@ button {
 
 .card p {
   margin: 0 0 18px;
-  color: #666;
+  color: #666666;
   line-height: 1.4;
   flex: 1;
 }
 
 .card button {
   background: var(--azul-rj);
-  color: white;
+  color: #FFFFFF;
   border-radius: 10px;
   padding: 12px 18px;
   font-size: 14px;
@@ -291,25 +334,33 @@ button {
   display: none;
   background: #FFFFFF;
   border: 1px dashed var(--cinza-borda);
-  color: #666;
+  color: #666666;
   border-radius: 14px;
   padding: 22px;
   margin-top: 18px;
 }
 
+/* ==========================================================
+   ÁREA DO RELATÓRIO
+========================================================== */
+
 .report-area {
   display: none;
   height: calc(100vh - 76px);
+  width: 100%;
 }
 
 .report-top {
-  background: #ffffff;
+  min-height: 69px;
+  background: #FFFFFF;
   padding: 14px 22px;
+
   display: flex;
   align-items: center;
   gap: 14px;
+
   border-bottom: 1px solid #E4E8F0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .back {
@@ -329,12 +380,13 @@ button {
 .report-heading {
   border-left: 5px solid var(--azul-rj);
   padding-left: 12px;
+  min-width: 0;
 }
 
 .report-heading span {
   display: block;
   font-size: 12px;
-  color: #777;
+  color: #777777;
   font-weight: normal;
   margin-bottom: 2px;
 }
@@ -343,6 +395,10 @@ button {
   font-size: 22px;
   font-weight: bold;
   color: var(--azul-escuro);
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .report-box {
@@ -351,18 +407,245 @@ button {
 }
 
 .report-box iframe {
+  display: block;
+
   width: 100%;
   height: 100%;
+
   border: 0;
   border-radius: 14px;
-  background: white;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+
+  background: #FFFFFF;
+
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
 }
 
+/* ==========================================================
+   BOTÃO TELA CHEIA
+========================================================== */
+
+.fullscreen-btn {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  padding: 10px 16px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #002B50;
+  color: #FFFFFF;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+  white-space: nowrap;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.fullscreen-btn:hover {
+  background: var(--azul-escuro);
+  opacity: 0.95;
+}
+
+.fullscreen-btn:active {
+  transform: scale(0.97);
+}
+
+/* ==========================================================
+   BOTÃO FLUTUANTE PARA SAIR DA TELA CHEIA
+========================================================== */
+
+.fullscreen-exit {
+  display: none;
+
+  position: fixed;
+
+  /*
+    Posição padrão.
+    Depois que o usuário mover o botão,
+    o app.js passa a utilizar left/top.
+  */
+  top: 14px;
+  right: 18px;
+
+  z-index: 10001;
+
+  width: 44px;
+  height: 44px;
+
+  padding: 0;
+
+  border: none;
+  border-radius: 50%;
+
+  background: rgba(0, 43, 80, 0.90);
+  color: #FFFFFF;
+
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+
+  cursor: grab;
+
+  align-items: center;
+  justify-content: center;
+
+  box-shadow:
+    0 3px 12px rgba(0, 0, 0, 0.25);
+
+  user-select: none;
+  -webkit-user-select: none;
+
+  touch-action: none;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.fullscreen-exit:hover {
+  background: #002B50;
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.32);
+}
+
+.fullscreen-exit:active {
+  cursor: grabbing;
+}
+
+/* ==========================================================
+   MODO TELA CHEIA
+========================================================== */
+
+body.report-fullscreen {
+  margin: 0;
+  padding: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  background: #FFFFFF;
+}
+
+/* Oculta o cabeçalho principal */
+
+body.report-fullscreen .header {
+  display: none;
+}
+
+/* Oculta o menu caso exista algum estado incorreto */
+
+body.report-fullscreen .menu {
+  display: none;
+}
+
+/* Aplicação ocupa toda a tela */
+
+body.report-fullscreen .app {
+  display: block;
+
+  width: 100vw;
+  height: 100vh;
+
+  min-height: 0;
+
+  margin: 0;
+  padding: 0;
+}
+
+/* Área do relatório ocupa 100% da tela */
+
+body.report-fullscreen .report-area {
+  display: block;
+
+  position: fixed;
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  background: #FFFFFF;
+
+  z-index: 9999;
+}
+
+/* Remove a barra superior do relatório */
+
+body.report-fullscreen .report-top {
+  display: none;
+}
+
+/* Container do Power BI ocupa toda a tela */
+
+body.report-fullscreen .report-box {
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  border: none;
+  border-radius: 0;
+
+  overflow: hidden;
+
+  background: #FFFFFF;
+}
+
+/* Power BI em tela cheia */
+
+body.report-fullscreen #powerbiFrame {
+  display: block;
+
+  width: 100vw;
+  height: 100vh;
+
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-radius: 0;
+
+  box-shadow: none;
+
+  background: #FFFFFF;
+}
+
+/* Exibe o botão flutuante */
+
+body.report-fullscreen .fullscreen-exit {
+  display: flex;
+}
+
+/* ==========================================================
+   RESPONSIVO
+========================================================== */
+
 @media (max-width: 768px) {
+
   .header {
     height: 64px;
     padding: 0 12px;
+  }
+
+  .header-left {
+    gap: 10px;
   }
 
   .header img {
@@ -416,6 +699,8 @@ button {
   .report-top {
     padding: 10px 12px;
     gap: 10px;
+
+    flex-wrap: nowrap;
   }
 
   .back {
@@ -426,6 +711,8 @@ button {
 
   .report-heading {
     padding-left: 10px;
+    flex: 1;
+    min-width: 0;
   }
 
   .report-heading span {
@@ -435,6 +722,17 @@ button {
   .report-title {
     font-size: 18px;
     line-height: 21px;
+  }
+
+  .fullscreen-btn {
+    padding: 9px 10px;
+    font-size: 0;
+    gap: 0;
+  }
+
+  .fullscreen-btn::before {
+    content: "⛶";
+    font-size: 18px;
   }
 
   .report-box {
@@ -458,214 +756,49 @@ button {
   .login-card h1 {
     font-size: 24px;
   }
-}
-/* ==========================================================
-   BOTÃO TELA CHEIA
-========================================================== */
-
-.fullscreen-btn {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-
-  padding: 10px 16px;
-
-  border: none;
-  border-radius: 8px;
-
-  background: #002b50;
-  color: #ffffff;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  cursor: pointer;
-
-  transition:
-    opacity 0.2s ease,
-    transform 0.2s ease;
-}
-
-.fullscreen-btn:hover {
-  opacity: 0.9;
-}
-
-.fullscreen-btn:active {
-  transform: scale(0.97);
-}
-
-
-/* ==========================================================
-   BOTÃO FLUTUANTE PARA SAIR DA TELA CHEIA
-========================================================== */
-
-.fullscreen-exit {
-  display: none;
-
-  position: fixed;
-
-  top: 14px;
-  right: 18px;
-
-  z-index: 10001;
-
-  width: 44px;
-  height: 44px;
-
-  border: none;
-  border-radius: 50%;
-
-  background: rgba(0, 43, 80, 0.90);
-  color: #ffffff;
-
-  font-size: 20px;
-  font-weight: 700;
-
-  cursor: pointer;
-
-  align-items: center;
-  justify-content: center;
-
-  box-shadow:
-    0 3px 12px rgba(0, 0, 0, 0.25);
-
-  transition:
-    background 0.2s ease,
-    transform 0.2s ease;
-}
-
-.fullscreen-exit:hover {
-  background: #002b50;
-}
-
-.fullscreen-exit:active {
-  transform: scale(0.95);
-}
-
-
-/* ==========================================================
-   MODO TELA CHEIA
-========================================================== */
-
-body.report-fullscreen {
-  margin: 0;
-  padding: 0;
-
-  overflow: hidden;
-}
-
-
-/* Oculta cabeçalho principal */
-
-body.report-fullscreen .header {
-  display: none;
-}
-
-
-/* Garante que aplicação ocupe a tela toda */
-
-body.report-fullscreen .app {
-  width: 100vw;
-  height: 100vh;
-
-  margin: 0;
-  padding: 0;
-}
-
-
-/* Área do relatório ocupa toda a tela */
-
-body.report-fullscreen .report-area {
-
-  display: block;
-
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 100vh;
-
-  margin: 0;
-  padding: 0;
-
-  background: #ffffff;
-
-  z-index: 9999;
-}
-
-
-/* Oculta barra superior do relatório */
-
-body.report-fullscreen .report-top {
-  display: none;
-}
-
-
-/* Container Power BI */
-
-body.report-fullscreen .report-box {
-
-  width: 100vw;
-  height: 100vh;
-
-  margin: 0;
-  padding: 0;
-
-  border: none;
-  border-radius: 0;
-
-  overflow: hidden;
-}
-
-
-/* Power BI */
-
-body.report-fullscreen #powerbiFrame {
-
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  margin: 0;
-  padding: 0;
-
-  border: none;
-}
-
-
-/* Mostra botão de saída */
-
-body.report-fullscreen .fullscreen-exit {
-  display: flex;
-}
-
-
-/* ==========================================================
-   AJUSTE MOBILE
-========================================================== */
-
-@media (max-width: 768px) {
-
-  .fullscreen-btn {
-
-    padding: 9px 12px;
-
-    font-size: 13px;
-  }
-
 
   .fullscreen-exit {
-
     width: 40px;
     height: 40px;
+
+    font-size: 18px;
 
     top: 10px;
     right: 10px;
   }
+}
 
+/* ==========================================================
+   TELAS MUITO PEQUENAS
+========================================================== */
+
+@media (max-width: 480px) {
+
+  .header h2 {
+    max-width: 160px;
+  }
+
+  .menu {
+    padding: 18px 12px;
+  }
+
+  .login-screen {
+    padding: 14px;
+  }
+
+  .login-card {
+    padding: 24px 18px;
+  }
+
+  .report-top {
+    padding: 8px;
+  }
+
+  .back {
+    padding: 8px 9px;
+  }
+
+  .report-title {
+    font-size: 16px;
+  }
 }
