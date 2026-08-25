@@ -3,85 +3,303 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Relatórios RJ Compressores</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+
   <main>
+
+    <!-- =======================================================
+         LOGIN
+    ======================================================== -->
+
     <section class="login-screen" id="loginScreen">
+
       <div class="login-card">
-        <img src="rj-logo.png" alt="RJ Compressores" class="login-logo" />
-        <h1>Relatórios RJ Compressores</h1>
-        <p>Informe seu usuário e senha para acessar os relatórios disponíveis para o seu perfil.</p>
+
+        <img
+          src="rj-logo.png"
+          alt="RJ Compressores"
+          class="login-logo"
+        />
+
+        <h1>
+          Relatórios RJ Compressores
+        </h1>
+
+        <p>
+          Informe seu usuário e senha para acessar os relatórios
+          disponíveis para o seu perfil.
+        </p>
 
         <div class="input-group">
-          <label for="user">Usuário</label>
-          <input type="text" id="user" placeholder="Digite seu usuário" autocomplete="username" />
+
+          <label for="user">
+            Usuário
+          </label>
+
+          <input
+            type="text"
+            id="user"
+            placeholder="Digite seu usuário"
+            autocomplete="username"
+          />
+
         </div>
 
         <div class="input-group">
-          <label for="password">Senha</label>
-          <input type="password" id="password" placeholder="Digite sua senha" autocomplete="current-password" />
+
+          <label for="password">
+            Senha
+          </label>
+
+          <input
+            type="password"
+            id="password"
+            placeholder="Digite sua senha"
+            autocomplete="current-password"
+          />
+
         </div>
 
-        <button class="btn-login" id="btnLogin" type="button">Entrar</button>
-        <div class="error" id="errorMessage">Usuário ou senha inválidos.</div>
+        <button
+          class="btn-login"
+          id="btnLogin"
+          type="button"
+        >
+          Entrar
+        </button>
+
+        <div
+          class="error"
+          id="errorMessage"
+        >
+          Usuário ou senha inválidos.
+        </div>
+
       </div>
+
     </section>
 
-    <section class="app" id="app">
+
+    <!-- =======================================================
+         APLICAÇÃO
+    ======================================================== -->
+
+    <section
+      class="app"
+      id="app"
+    >
+
+      <!-- =====================================================
+           CABEÇALHO
+      ====================================================== -->
+
       <header class="header">
+
         <div class="header-left">
-          <img src="rj-branco.png" alt="RJ Compressores" />
+
+          <img
+            src="rj-branco.png"
+            alt="RJ Compressores"
+          />
+
           <div>
-            <h2>Relatórios RJ Compressores</h2>
-            <span class="header-subtitle" id="userInfo">Portal de relatórios</span>
+
+            <h2>
+              Relatórios RJ Compressores
+            </h2>
+
+            <span
+              class="header-subtitle"
+              id="userInfo"
+            >
+              Portal de relatórios
+            </span>
+
           </div>
+
         </div>
 
-        <button class="logout" id="btnLogout" type="button">Sair</button>
+
+        <button
+          class="logout"
+          id="btnLogout"
+          type="button"
+        >
+          Sair
+        </button>
+
       </header>
 
-      <section class="menu" id="menu">
+
+      <!-- =====================================================
+           MENU
+      ====================================================== -->
+
+      <section
+        class="menu"
+        id="menu"
+      >
+
         <div class="menu-top">
+
           <div>
-            <h1>Menu de Relatórios</h1>
-            <p>Selecione abaixo o relatório que deseja acessar.</p>
+
+            <h1>
+              Menu de Relatórios
+            </h1>
+
+            <p>
+              Selecione abaixo o relatório que deseja acessar.
+            </p>
+
           </div>
-          <div class="access-chip" id="accessChip">Acesso liberado</div>
+
+
+          <div
+            class="access-chip"
+            id="accessChip"
+          >
+            Acesso liberado
+          </div>
+
         </div>
+
 
         <div class="search-box">
-          <label for="searchReport">Pesquisar relatório</label>
-          <input type="text" id="searchReport" placeholder="Digite para filtrar os relatórios..." />
+
+          <label for="searchReport">
+            Pesquisar relatório
+          </label>
+
+          <input
+            type="text"
+            id="searchReport"
+            placeholder="Digite para filtrar os relatórios..."
+          />
+
         </div>
 
-        <div class="cards" id="cardsRelatorios"></div>
 
-        <div class="empty-state" id="emptyState">
+        <div
+          class="cards"
+          id="cardsRelatorios"
+        ></div>
+
+
+        <div
+          class="empty-state"
+          id="emptyState"
+        >
           Nenhum relatório disponível para este usuário ou para a pesquisa informada.
         </div>
+
       </section>
 
-      <section class="report-area" id="reportArea">
+
+      <!-- =====================================================
+           ÁREA DO RELATÓRIO
+      ====================================================== -->
+
+      <section
+        class="report-area"
+        id="reportArea"
+      >
+
+        <!-- Barra superior do relatório -->
+
         <div class="report-top">
-          <button class="back" id="btnBack" type="button">← Voltar</button>
+
+          <button
+            class="back"
+            id="btnBack"
+            type="button"
+          >
+            ← Voltar
+          </button>
+
 
           <div class="report-heading">
-            <span>Relatório selecionado</span>
-            <div class="report-title" id="reportTitle">Relatório</div>
+
+            <span>
+              Relatório selecionado
+            </span>
+
+            <div
+              class="report-title"
+              id="reportTitle"
+            >
+              Relatório
+            </div>
+
           </div>
+
+
+          <!-- Botão Tela Cheia -->
+
+          <button
+            class="fullscreen-btn"
+            id="btnFullscreen"
+            type="button"
+            title="Tela cheia"
+            aria-label="Ativar tela cheia"
+          >
+            ⛶ Tela cheia
+          </button>
+
         </div>
+
+
+        <!-- Power BI -->
 
         <div class="report-box">
-          <iframe id="powerbiFrame" title="Relatório Power BI" src="" allowfullscreen="true"></iframe>
+
+          <iframe
+            id="powerbiFrame"
+            title="Relatório Power BI"
+            src=""
+            allowfullscreen="true"
+          ></iframe>
+
         </div>
+
       </section>
+
     </section>
+
   </main>
 
+
+  <!-- =======================================================
+       BOTÃO FLUTUANTE PARA SAIR DA TELA CHEIA
+  ======================================================== -->
+
+  <button
+    id="btnFullscreenExit"
+    class="fullscreen-exit"
+    type="button"
+    title="Sair da tela cheia"
+    aria-label="Sair da tela cheia"
+  >
+    ✕
+  </button>
+
+
+  <!-- =======================================================
+       SCRIPTS
+  ======================================================== -->
+
   <script src="usuarios.js"></script>
+
   <script src="relatorios.js"></script>
+
   <script src="app.js"></script>
+
+
 </body>
 </html>
