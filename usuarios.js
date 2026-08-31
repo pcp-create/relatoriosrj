@@ -67,5 +67,33 @@ const usuarios = [
     nome: "Priscyla",
     perfil: "Geral",
     relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas"]
+  },
+  {
+    usuario: "taylor",
+    senha: "K7M4P2",
+    nome: "Taylor",
+    perfil: "Vendedor",
+    relatorios: ["equipamentos", "projecao", "despesas"]
+  },
+  {
+    usuario: "lucas.baldo",
+    senha: "R9X3A6",
+    nome: "Lucas Baldo",
+    perfil: "Vendedor",
+    relatorios: ["equipamentos", "projecao", "despesas"]
+  },
+  {
+    usuario: "marcelo",
+    senha: "B5N8Q1",
+    nome: "Marcelo Pinheiro",
+    perfil: "Vendedor",
+    relatorios: ["equipamentos", "projecao", "despesas"]
+  },
+  {
+    usuario: "fabio",
+    senha: "T2W7L9",
+    nome: "Fabio",
+    perfil: "Vendedor / Técnico",
+    relatorios: ["equipamentos", "projecao", "programacao", "despesas"]
   }
 ];
