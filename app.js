@@ -1,6 +1,7 @@
 let usuarioLogado = null;
 let filtroAtual = "";
 
+
 // ==========================================================
 // ELEMENTOS DA PÁGINA
 // ==========================================================
@@ -29,6 +30,15 @@ const reportTitle =
 const cardsRelatorios =
   document.getElementById("cardsRelatorios");
 
+const cardsComercial =
+  document.getElementById("cardsComercial");
+
+const cardsPlanejamento =
+  document.getElementById("cardsPlanejamento");
+
+const cardsOperacional =
+  document.getElementById("cardsOperacional");
+
 const emptyState =
   document.getElementById("emptyState");
 
@@ -37,6 +47,9 @@ const userInfo =
 
 const accessChip =
   document.getElementById("accessChip");
+
+const accessChipText =
+  document.getElementById("accessChipText");
 
 const searchReport =
   document.getElementById("searchReport");
@@ -139,6 +152,7 @@ function logout() {
     "rj_logged"
   );
 
+
   localStorage.removeItem(
     "rj_user"
   );
@@ -203,7 +217,14 @@ function atualizarCabecalhoUsuario() {
     usuarioLogado.relatorios.length;
 
 
-  if (accessChip) {
+  if (accessChipText) {
+
+    accessChipText.innerText =
+      `${total} relatório${total === 1 ? "" : "s"} ` +
+      `liberado${total === 1 ? "" : "s"}`;
+
+  }
+  else if (accessChip) {
 
     accessChip.innerText =
       `${total} relatório${total === 1 ? "" : "s"} ` +
@@ -255,6 +276,53 @@ function montarMenuRelatorios() {
     obterRelatoriosPermitidos();
 
 
+  // ========================================================
+  // LIMPA OS CONTAINERS
+  // ========================================================
+
+  if (cardsComercial) {
+
+    cardsComercial.innerHTML =
+      "";
+
+  }
+
+
+  if (cardsPlanejamento) {
+
+    cardsPlanejamento.innerHTML =
+      "";
+
+  }
+
+
+  if (cardsOperacional) {
+
+    cardsOperacional.innerHTML =
+      "";
+
+  }
+
+
+  /*
+    Compatibilidade com o HTML antigo.
+  */
+
+  if (
+    cardsRelatorios &&
+    cardsRelatorios.classList.contains("cards")
+  ) {
+
+    cardsRelatorios.innerHTML =
+      "";
+
+  }
+
+
+  // ========================================================
+  // FILTRO
+  // ========================================================
+
   const filtrados =
     permitidos.filter(
       relatorio => {
@@ -263,7 +331,6 @@ function montarMenuRelatorios() {
           `${relatorio.titulo || ""} ` +
           `${relatorio.descricao || ""} ` +
           `${relatorio.categoria || ""}`;
-
 
         return texto
           .toLowerCase()
@@ -275,62 +342,141 @@ function montarMenuRelatorios() {
     );
 
 
-  cardsRelatorios.innerHTML =
-    "";
+  // ========================================================
+  // IDENTIFICAR SETOR
+  // ========================================================
+
+  function obterSetor(relatorio) {
+
+    const categoria =
+      String(
+        relatorio.categoria || ""
+      )
+        .trim()
+        .toUpperCase();
 
 
-  filtrados.forEach(
-    relatorio => {
+    if (
+      categoria.includes(
+        "COMERCIAL"
+      )
+    ) {
 
-      const card =
-        document.createElement(
-          "article"
-        );
+      return "COMERCIAL";
 
-
-      card.className =
-        "card";
+    }
 
 
-      card.innerHTML = `
-        <div class="card-header">
+    if (
+      categoria.includes(
+        "PLANEJAMENTO"
+      )
+    ) {
 
-          <div class="card-icon">
-            ${relatorio.icone || "📊"}
+      return "PLANEJAMENTO";
+
+    }
+
+
+    if (
+      categoria.includes(
+        "OPERACIONAL"
+      )
+    ) {
+
+      return "OPERACIONAL";
+
+    }
+
+
+    /*
+      Caso exista algum relatório
+      sem setor definido, ele será
+      colocado em Operacional.
+    */
+
+    return "OPERACIONAL";
+
+  }
+
+
+  // ========================================================
+  // CRIAR CARD
+  // ========================================================
+
+  function criarCard(relatorio) {
+
+    const card =
+      document.createElement(
+        "article"
+      );
+
+
+    card.className =
+      "card";
+
+
+    card.dataset.reportId =
+      relatorio.id;
+
+
+    card.dataset.sector =
+      obterSetor(
+        relatorio
+      );
+
+
+    card.innerHTML = `
+
+      <div class="card-content">
+
+        <div class="card-icon">
+          ${relatorio.icone || "📊"}
+        </div>
+
+
+        <div class="card-info">
+
+          <div class="card-category">
+            ${relatorio.categoria || "Relatório"}
           </div>
 
-          <div>
 
-            <div class="card-category">
-              ${relatorio.categoria || "Relatório"}
-            </div>
+          <h3>
+            ${relatorio.titulo || "Relatório"}
+          </h3>
 
-            <h3>
-              ${relatorio.titulo}
-            </h3>
 
-          </div>
+          <p>
+            ${relatorio.descricao || ""}
+          </p>
 
         </div>
 
-        <p>
-          ${relatorio.descricao || ""}
-        </p>
 
         <button
+          class="card-button"
           type="button"
           data-report-id="${relatorio.id}"
         >
           Abrir relatório
+          <span class="card-button-icon">
+            ↗
+          </span>
         </button>
-      `;
+
+      </div>
+
+    `;
 
 
-      const botao =
-        card.querySelector(
-          "button"
-        );
+    const botao =
+      card.querySelector(
+        "button"
+      );
 
+
+    if (botao) {
 
       botao.addEventListener(
         "click",
@@ -340,19 +486,139 @@ function montarMenuRelatorios() {
           )
       );
 
+    }
 
-      cardsRelatorios.appendChild(
-        card
-      );
+
+    return card;
+
+  }
+
+
+  // ========================================================
+  // DISTRIBUIR RELATÓRIOS
+  // ========================================================
+
+  let totalExibidos =
+    0;
+
+
+  filtrados.forEach(
+    relatorio => {
+
+      const setor =
+        obterSetor(
+          relatorio
+        );
+
+
+      const card =
+        criarCard(
+          relatorio
+        );
+
+
+      let container =
+        null;
+
+
+      switch (setor) {
+
+        case "COMERCIAL":
+
+          container =
+            cardsComercial;
+
+          break;
+
+
+        case "PLANEJAMENTO":
+
+          container =
+            cardsPlanejamento;
+
+          break;
+
+
+        case "OPERACIONAL":
+
+          container =
+            cardsOperacional;
+
+          break;
+
+
+        default:
+
+          container =
+            cardsOperacional;
+
+          break;
+
+      }
+
+
+      if (container) {
+
+        container.appendChild(
+          card
+        );
+
+        totalExibidos++;
+
+      }
 
     }
   );
 
 
-  emptyState.style.display =
-    filtrados.length === 0
-      ? "block"
-      : "none";
+  // ========================================================
+  // OCULTAR SETORES SEM RELATÓRIOS
+  // ========================================================
+
+  const setores =
+    document.querySelectorAll(
+      ".sector-section"
+    );
+
+
+  setores.forEach(
+    setor => {
+
+      const quantidade =
+        setor.querySelectorAll(
+          ".card"
+        ).length;
+
+
+      if (quantidade === 0) {
+
+        setor.style.display =
+          "none";
+
+      }
+      else {
+
+        setor.style.display =
+          "";
+
+      }
+
+    }
+  );
+
+
+  // ========================================================
+  // ESTADO VAZIO
+  // ========================================================
+
+  if (emptyState) {
+
+    emptyState.style.display =
+      totalExibidos === 0
+        ? "block"
+        : "none";
+
+  }
 
 }
 
@@ -595,8 +861,8 @@ async function ativarTelaCheiaRelatorio() {
 
 
   /*
-    Aguarda o CSS exibir o botão antes
-    de calcular sua posição.
+    Aguarda o CSS exibir o botão
+    antes de calcular sua posição.
   */
 
   requestAnimationFrame(
@@ -623,6 +889,7 @@ async function ativarTelaCheiaRelatorio() {
     }
 
   }
+
 
   catch (erro) {
 
@@ -662,6 +929,7 @@ async function sairTelaCheiaRelatorio() {
     }
 
   }
+
 
   catch (erro) {
 
@@ -749,12 +1017,14 @@ function carregarPosicaoBotaoFullscreen() {
 
     const larguraBotao =
       btnFullscreenExit
-        .offsetWidth || 44;
+        .offsetWidth ||
+      44;
 
 
     const alturaBotao =
       btnFullscreenExit
-        .offsetHeight || 44;
+        .offsetHeight ||
+      44;
 
 
     /*
@@ -796,6 +1066,7 @@ function carregarPosicaoBotaoFullscreen() {
       "auto";
 
   }
+
 
   catch (erro) {
 
@@ -896,6 +1167,7 @@ function iniciarArrasteBotao(
       );
 
   }
+
 
   catch (_) {}
 
@@ -1013,8 +1285,7 @@ function moverBotaoFullscreen(
 
 
   /*
-    Muito importante:
-    remove a referência de posição
+    Remove a referência de posição
     pelo lado direito.
   */
 
@@ -1049,6 +1320,7 @@ function finalizarArrasteBotao(
       );
 
   }
+
 
   catch (_) {}
 
