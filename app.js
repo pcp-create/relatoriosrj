@@ -1,4 +1,4 @@
-let usuarioLogado = null;
+let usuarioLogado = null; 
 let filtroAtual = "";
 
 
