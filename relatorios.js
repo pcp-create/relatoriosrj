@@ -56,5 +56,23 @@ const relatorios = [
     icone: "💳",
     url: "https://despesasrj.vercel.app/",
     novaAba: true
+  },
+   {
+    id: "calendario",
+    titulo: "Calendario Programação Iliot",
+    descricao: "Acompanhamento de Ordem de Serviços",
+    categoria: "Planejamento",
+    icone: "📅",
+    url: "https://app.rjcompressores.com.br/pt-BR/service_orders/os_calendar/",
+    novaAba: false
+  },
+   {
+    id: "listaprecos",
+    titulo: "Lista de Preços",
+    descricao: "Listas de Preços Gerais",
+    categoria: "Comercial",
+    icone: "📈",
+    url: "https://rjcompressores.github.io/Lista-Comercial-Precos/",
+    novaAba: false
   }
 ];
