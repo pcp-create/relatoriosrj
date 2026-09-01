@@ -138,13 +138,17 @@
 
 
       <!-- =====================================================
-           MENU
+           MENU DE RELATÓRIOS
       ====================================================== -->
 
       <section
         class="menu"
         id="menu"
       >
+
+        <!-- ===================================================
+             TOPO
+        ==================================================== -->
 
         <div class="menu-top">
 
@@ -165,11 +169,18 @@
             class="access-chip"
             id="accessChip"
           >
-            Acesso liberado
+            <span class="access-icon">▣</span>
+            <span id="accessChipText">
+              Relatórios liberados
+            </span>
           </div>
 
         </div>
 
+
+        <!-- ===================================================
+             PESQUISA
+        ==================================================== -->
 
         <div class="search-box">
 
@@ -177,26 +188,178 @@
             Pesquisar relatório
           </label>
 
-          <input
-            type="text"
-            id="searchReport"
-            placeholder="Digite para filtrar os relatórios..."
-          />
+          <div class="search-input-wrapper">
+
+            <span class="search-icon">
+              ⌕
+            </span>
+
+            <input
+              type="text"
+              id="searchReport"
+              placeholder="Digite para filtrar os relatórios..."
+              autocomplete="off"
+            />
+
+          </div>
 
         </div>
 
 
-        <div
-          class="cards"
-          id="cardsRelatorios"
-        ></div>
+        <!-- ===================================================
+             RELATÓRIOS POR SETOR
+        ==================================================== -->
 
+        <div
+          class="report-sectors"
+          id="cardsRelatorios"
+        >
+
+          <!-- =================================================
+               COMERCIAL
+          ================================================== -->
+
+          <section
+            class="sector-section sector-comercial"
+            data-sector="COMERCIAL"
+          >
+
+            <div class="sector-header">
+
+              <div class="sector-icon">
+                ▥
+              </div>
+
+              <div>
+
+                <h2>
+                  COMERCIAL
+                </h2>
+
+                <p>
+                  Relatórios voltados para vendas, contratos e precificação.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div
+              class="sector-cards"
+              id="cardsComercial"
+            ></div>
+
+          </section>
+
+
+          <!-- =================================================
+               PLANEJAMENTO
+          ================================================== -->
+
+          <section
+            class="sector-section sector-planejamento"
+            data-sector="PLANEJAMENTO"
+          >
+
+            <div class="sector-header">
+
+              <div class="sector-icon">
+                ▣
+              </div>
+
+              <div>
+
+                <h2>
+                  PLANEJAMENTO
+                </h2>
+
+                <p>
+                  Relatórios para programação, ordens de serviço e desempenho.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div
+              class="sector-cards"
+              id="cardsPlanejamento"
+            ></div>
+
+          </section>
+
+
+          <!-- =================================================
+               OPERACIONAL
+          ================================================== -->
+
+          <section
+            class="sector-section sector-operacional"
+            data-sector="OPERACIONAL"
+          >
+
+            <div class="sector-header">
+
+              <div class="sector-icon">
+                ◈
+              </div>
+
+              <div>
+
+                <h2>
+                  OPERACIONAL
+                </h2>
+
+                <p>
+                  Relatórios de equipamentos, operações e despesas.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div
+              class="sector-cards"
+              id="cardsOperacional"
+            ></div>
+
+          </section>
+
+        </div>
+
+
+        <!-- ===================================================
+             ESTADO VAZIO
+        ==================================================== -->
 
         <div
           class="empty-state"
           id="emptyState"
         >
-          Nenhum relatório disponível para este usuário ou para a pesquisa informada.
+          Nenhum relatório disponível para este usuário
+          ou para a pesquisa informada.
+        </div>
+
+
+        <!-- ===================================================
+             DICA
+        ==================================================== -->
+
+        <div class="menu-tip">
+
+          <div class="tip-icon">
+            i
+          </div>
+
+          <div>
+            <strong>Dica:</strong>
+            Utilize o campo de pesquisa acima para encontrar
+            rapidamente o relatório desejado.
+          </div>
+
         </div>
 
       </section>
@@ -210,8 +373,6 @@
         class="report-area"
         id="reportArea"
       >
-
-        <!-- Barra superior do relatório -->
 
         <div class="report-top">
 
@@ -240,8 +401,6 @@
           </div>
 
 
-          <!-- Botão Tela Cheia -->
-
           <button
             class="fullscreen-btn"
             id="btnFullscreen"
@@ -255,7 +414,9 @@
         </div>
 
 
-        <!-- Power BI -->
+        <!-- =================================================
+             POWER BI
+        ================================================== -->
 
         <div class="report-box">
 
@@ -299,7 +460,6 @@
   <script src="relatorios.js"></script>
 
   <script src="app.js"></script>
-
 
 </body>
 </html>
