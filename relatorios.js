@@ -69,7 +69,7 @@ const relatorios = [
    {
     id: "listaprecos",
     titulo: "Lista de Preços",
-    descricao: "Listas de Preços Gerais",
+    descricao: "Preços de venda, mão de obra e políticas",
     categoria: "Comercial",
     icone: "📈",
     url: "https://rjcompressores.github.io/Lista-Comercial-Precos/",
