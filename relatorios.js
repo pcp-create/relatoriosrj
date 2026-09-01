@@ -64,7 +64,7 @@ const relatorios = [
     categoria: "Planejamento",
     icone: "📅",
     url: "https://app.rjcompressores.com.br/pt-BR/service_orders/os_calendar/",
-    novaAba: false
+    novaAba: true
   },
    {
     id: "listaprecos",
