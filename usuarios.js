@@ -27,6 +27,13 @@ const usuarios = [
     relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"]
   },
   {
+    usuario: "adriano",
+    senha: "G7#k2@",
+    nome: "Adriano Xavier",
+    perfil: "Geral",
+    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"]
+  },
+  {
     usuario: "paulo",
     senha: "Mx!954Te",
     nome: "Paulo Duwe",
