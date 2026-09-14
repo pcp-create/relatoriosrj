@@ -123,5 +123,12 @@ const usuarios = [
     nome: "Henrique",
     perfil: "Comercial",
     relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos", "historicoequipamento"]
+  },
+  {
+    usuario: "sara",
+    senha: "T2W7L9",
+    nome: "Sara",
+    perfil: "Comercial",
+    relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos", "historicoequipamento"]
   }
 ];
