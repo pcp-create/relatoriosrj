@@ -74,5 +74,14 @@ const relatorios = [
     icone: "📈",
     url: "https://rjcompressores.github.io/Lista-Comercial-Precos/",
     novaAba: false
+  },
+  {
+    id: "historicoequipamento",
+    titulo: "Consultas Equipamentos e Materiais",
+    descricao: "Consulte o histórico de equipamentos, materiais, preços e informações comerciais.",
+    categoria: "Comercial",
+    icone: "🔎",
+    url: "https://historicorj.vercel.app/",
+    novaAba: false
   }
 ];
