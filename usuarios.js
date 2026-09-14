@@ -10,42 +10,42 @@ const usuarios = [
     senha: "317622",
     nome: "Guilherme",
     perfil: "Administrador",
-    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"]
+    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"], "historicoequipamento"]
   },
   {
     usuario: "jose.lino",
     senha: "Rj@482Km",
     nome: "Jose Lino",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"]
+    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos", "historicoequipamento"]
   },
   {
     usuario: "alexandro",
     senha: "Lp#731Qa",
     nome: "Alexandro Spaeth",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"]
+    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos", "historicoequipamento"]
   },
   {
     usuario: "adriano",
     senha: "G7#k2@",
     nome: "Adriano Xavier",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"]
+    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos", "historicoequipamento"]
   },
   {
     usuario: "paulo",
     senha: "Mx!954Te",
     nome: "Paulo Duwe",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"]
+    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos", "historicoequipamento"]
   },
   {
     usuario: "bruno",
     senha: "Vn$286Ru",
     nome: "Bruno Pereira",
     perfil: "Geral",
-    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"]
+    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos", "historicoequipamento"]
   },
   {
     usuario: "viviane",
@@ -108,20 +108,20 @@ const usuarios = [
     senha: "R1TER3",
     nome: "Danieli",
     perfil: "Comercial",
-    relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos"]
+    relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos", "historicoequipamento"]
   },
   {
     usuario: "maick",
     senha: "K7@p2X",
     nome: "Maick Coelho",
     perfil: "Comercial",
-    relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos"]
+    relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos", "historicoequipamento"]
   },
   {
     usuario: "henrique",
     senha: "9#Rm4Q",
     nome: "Henrique",
     perfil: "Comercial",
-    relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos"]
+    relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos", "historicoequipamento"]
   }
 ];
