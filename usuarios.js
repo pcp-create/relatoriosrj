@@ -109,5 +109,19 @@ const usuarios = [
     nome: "Danieli",
     perfil: "Comercial",
     relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos"]
+  },
+  {
+    usuario: "maick",
+    senha: "K7@p2X",
+    nome: "Maick Coelho",
+    perfil: "Comercial",
+    relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos"]
+  },
+  {
+    usuario: "henrique",
+    senha: "9#Rm4Q",
+    nome: "Henrique",
+    perfil: "Comercial",
+    relatorios: ["equipamentos", "projecao", "programacao", "faroloficina", "calendario", "listaprecos"]
   }
 ];
