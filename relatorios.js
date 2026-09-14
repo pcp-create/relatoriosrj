@@ -82,6 +82,6 @@ const relatorios = [
     categoria: "Comercial",
     icone: "🔎",
     url: "https://historicorj.vercel.app/",
-    novaAba: false
+    novaAba: true
   }
 ];
