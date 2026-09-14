@@ -10,7 +10,7 @@ const usuarios = [
     senha: "317622",
     nome: "Guilherme",
     perfil: "Administrador",
-    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"], "historicoequipamento"]
+    relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos", "historicoequipamento"]
   },
   {
     usuario: "jose.lino",
