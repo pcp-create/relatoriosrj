@@ -1,4 +1,4 @@
-/*
+/* 
   Controle de usuários e permissões
   Para liberar um relatório para um usuário, adicione o ID do relatório na lista "relatorios".
   O ID precisa existir no arquivo relatorios.js.
