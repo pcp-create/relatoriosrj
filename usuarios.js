@@ -76,13 +76,6 @@ const usuarios = [
     relatorios: ["equipamentos", "projecao", "programacao", "ordemservico", "faroloficina", "despesas", "calendario", "listaprecos"]
   },
   {
-    usuario: "taylor",
-    senha: "K7M4P2",
-    nome: "Taylor",
-    perfil: "Vendedor",
-    relatorios: ["equipamentos", "projecao", "despesas", "faroloficina", "listaprecos"]
-  },
-  {
     usuario: "lucas.baldo",
     senha: "R9X3A6",
     nome: "Lucas Baldo",
